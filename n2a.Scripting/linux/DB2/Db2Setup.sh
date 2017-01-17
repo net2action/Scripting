@@ -59,7 +59,7 @@ function getOs {
       os="Ubt"
    fi    
 
-   if [ "$DEBUG" == "ON" ]; then
+   if [ "$DEBUG" == "True" ]; then
       msgLine "Now we run on: $osCurrent"
    fi
 }
@@ -133,8 +133,8 @@ if [ ${rc} -eq 0 ] ; then
       if [ ${rc} -eq 0 ] ; then
          $homeDir/bin/updateKernel${os}.sh
          rc=$?
-         if [ ${rc} -eq 0 ] ; then
-            $homeDir/bin/installDb2.sh -v ${version} -p ${packPath}
+        if [ ${rc} -eq 0 ] ; then
+                $homeDir/bin/installDb2.sh -v ${version} -p ${packPath}
          fi
       fi
    fi
