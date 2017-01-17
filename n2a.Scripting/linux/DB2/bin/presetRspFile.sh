@@ -4,9 +4,11 @@ AUTHOR="A.Fontana"
 VERSION="1.0.0"
 OWNER="(c) by Net2Action  - 2016"
 
-mkdir -p ../log
-log=../log/$(echo $PROGNAME | cut -d "." -f 1)
-logFile=$log.log
+if [ -z "$logFile" ]; then
+   mkdir -p ../log
+   log=../log/$(echo $PROGNAME | cut -d "." -f 1)
+   logFile=$log.log
+fi
 
 
 
