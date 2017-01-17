@@ -16,3 +16,4 @@ CREATE DB ${DBName} ON ${dataMountPoint} using codeset UTF-8 territory us PAGESI
 UPDATE DB CFG FOR ${DBName} USING locktimeout 30;
 terminate;
 eof
+ 
