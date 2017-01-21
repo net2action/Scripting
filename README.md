@@ -13,8 +13,7 @@ my plan is release all script for Linux: Ubuntu, RedHat, Suse and if possible fo
 
 to download it from your server run following command
 
-wget https://github.com/net2action/Scripting/tree/ -name_of_Branch- -O -fileName.tar.gz-
 
-eg.
+wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/tarball/Linux.Db2  -O Db2Script.tar.gz
 
-wget https://github.com/net2action/Scripting/tree/Linux.Db2 -O Db2Script.tar.gz
+wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/zipball/Linux.Db2 -O Db2Script.zip
