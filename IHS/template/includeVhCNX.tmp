@@ -1,0 +1,88 @@
+# ----------------------------------------
+# icVirtualHost.conf
+#
+# Author: Andrea Fontana
+# Mail: a.fontana@net2action.com 
+# Documentation: 
+#
+# Version: 1.0
+# Date: 2015-03-20
+#
+# by net2action
+# ----------------------------------------
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@domain@
+    DocumentRoot www/@docroot@
+    ServerName @fqdn@
+    ErrorLog  logs/www/@docroot@/error.log
+    CustomLog logs/www/@docroot@/access.log common
+	Redirect permanent / https://@fqdn@/ 
+   
+</VirtualHost>
+
+
+<VirtualHost *:443>
+
+
+    SSLEnable
+    SSLProxyEngine on
+   
+    # remove comment when configure with a good certificate 
+    #SSLServerCert *.@domainssl@
+
+    ServerAdmin webmaster@domain@
+    DocumentRoot www/@docroot@
+    ServerName @fqdn@
+    ErrorLog  logs/www/@docroot@/sslerror.log
+    CustomLog logs/www/@docroot@/sslaccess.log common
+
+	#Only the specified MIME types will be compressed.
+	AddOutputFilterByType DEFLATE application/atom+xml
+	AddOutputFilterByType DEFLATE application/atomcat+xml
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/json
+	AddOutputFilterByType DEFLATE application/octet-stream
+	AddOutputFilterByType DEFLATE application/x-javascript
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/javascript
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE text/xsl
+
+	<Location /activities >
+  		AddOutputFilterByType DEFLATE application/octet-stream
+	</Location>
+
+
+	#Ensure that only text/html content is compressed for older browsers
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0 [678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+	#make sure proxies do not deliver the wrong content
+	Header append Vary User-Agent env=!dont-vary
+
+	# Set WAS Offload header
+	RequestHeader set @sslOffLoadKey@ on
+
+	# Ensures that images and executable binaries are not compressed
+	SetEnvIfNoCase Request_URI \\.(?:gif|jpe?g|png|exe)$ no-gzip dont-vary
+
+    RewriteEngine On
+
+    RewriteLog logs/www/@docroot@/rewrite.log
+    RewriteLogLevel 0
+    RewriteRule		^/$	/homepage/web/widgets/	[R=301]
+    
+    # uncomment if you use this Virtual Host like a R-Proxy for Connections.
+    #ProxyPreserveHost On
+    #ProxyPass / http://@icIp@/
+    #ProxyPassReverse / http://@icIp@/
+   
+</VirtualHost>
+
+SSLDisable

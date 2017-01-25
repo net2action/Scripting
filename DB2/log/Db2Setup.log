@@ -1,0 +1,40 @@
+
+[Fri Jan 13 16:23:09 CET 2017] Db2Setup.sh:[33] Start Setup process: Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] Create USers and Groups begin at Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [129]: groupadd: group 'db2iadm1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] Group Id : 730 assigned to group: db2iadm1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [137]: groupadd: group 'db2fsdm1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] Group Id : 730 assigned to group: db2fsdm1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [145]: groupadd: group 'dasadm1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] Group Id : 730 assigned to group: dasadm1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [156]: useradd: user 'db2inst1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] User Id : 1014 assigned to user: db2inst1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [165]: useradd: user 'db2fenc1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] User Id : 1015 assigned to user: db2fenc1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh [174]: useradd: user 'dasusr1' already exists
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] User Id : 1016 assigned to user: dasusr1
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] ---------------------------------------
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] BUILD SUCESSS
+[Fri Jan 13 16:23:09 CET 2017] createUsersGroupUbt.sh:[42] End: Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] presetDb2EnvUbt.sh:[28] Preset environment for DB2 begin at Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] presetDb2EnvUbt.sh:[28] ---------------------------------------
+[Fri Jan 13 16:23:09 CET 2017] presetDb2EnvUbt.sh:[28] BUILD SUCESSS
+[Fri Jan 13 16:23:09 CET 2017] presetDb2EnvUbt.sh:[28] End: Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] Set hostname  begin at Fri Jan 13 16:23:09 CET 2017
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] Ip: 10.0.2.15 solved with 
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] Fqdn: dbstore.ondemand.com solved by 10.0.2.15
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] ---------------------------------------
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] BUILD SUCESSS
+[Fri Jan 13 16:23:09 CET 2017] setHostUbt.sh:[26] End: Fri Jan 13 16:23:10 CET 2017
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] Start: Fri Jan 13 16:23:10 CET 2017
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] Reload kernel parameters.
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] 
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] Kernel parameters updated and reloaded.
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] 
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] ---------------------------------------
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] BUILD SUCESSS
+[Fri Jan 13 16:23:10 CET 2017] updateKernelUbt.sh:[27] End: Fri Jan 13 16:23:10 CET 2017
+[Fri Jan 13 16:23:10 CET 2017] installDb2.sh:[35] Install DB2 begin at Fri Jan 13 16:23:10 CET 2017
+[Fri Jan 13 16:23:10 CET 2017] installDb2.sh:[35] ---------------------------------------
+[Fri Jan 13 16:23:10 CET 2017] installDb2.sh:[35] BUILD SUCESSS
+[Fri Jan 13 16:23:10 CET 2017] installDb2.sh:[35] End: Fri Jan 13 16:24:08 CET 2017

@@ -1,0 +1,23 @@
+#====================================================================
+#   by A.F. net2action
+#
+#   04-03-2016
+#
+#====================================================================
+
+#Listen 443
+NameVirtualHost *:80
+#NameVirtualHost *:443
+
+LoadModule headers_module modules/mod_headers.so
+LoadModule ibm_ssl_module modules/mod_ibm_ssl.so
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule deflate_module modules/mod_deflate.so
+
+include ./conf/vh/*
+
+#Keyfile "/opt/IBM/HTTPServer/certs/key.kdb"
+#SSLStashFile "/opt/IBM/HTTPServer/certs/key.sth"
+
+#LoadModule was_ap22_module /opt/IBM/WebSphere/Plugins/bin/64bits/mod_was_ap22_http.so
+#WebSpherePluginConfig /opt/IBM/WebSphere/Plugins/config/webserver1/plugin-cfg.xml

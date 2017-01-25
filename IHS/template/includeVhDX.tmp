@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+    ServerAdmin supporto.sistemi@@domain@
+    DocumentRoot www/@vh@
+    ServerName @fqdn@
+    ErrorLog "|@ihsBin@/rotatelogs -l logs/www/@vh@/error_log.%Y.%m.%d 5M"
+    CustomLog "|@ihsBin@/rotatelogs -l logs/www/@vh@/access_log.%Y.%m.%d 5M" common
+    #----------------------------------------
+    # managing hidden redirection of /
+    #----------------------------------------
+    RewriteEngine On
+    RewriteLog logs/www/@vh@/rewrite.log
+    RewriteLogLevel 0
+    RewriteCond %{HTTP_HOST} ^@fqdn@
+    RewriteCond %{REQUEST_URI} ^(/)?$
+    RewriteRule ^(/)?$ /wps/myportal [L,R=301]
+    #----------------------------------------
+</VirtualHost>
