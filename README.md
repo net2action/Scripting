@@ -14,6 +14,10 @@ my plan is release all script for Linux: Ubuntu, RedHat, Suse and if possible fo
 to download it from your server run following command
 
 
-wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/tarball/Linux.Db2  -O Db2Script.tar.gz
+wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/tarball/Linux -O Db2Script.tar.gz
 
-wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/zipball/Linux.Db2 -O Db2Script.zip
+wget --no-check-certificate  https://api.github.com/repos/net2action/Scripting/zipball/Linux -O Db2Script.zip
+
+
+
+Temp Folder : - This folder will be use to working progress script - Use carefully :-)
