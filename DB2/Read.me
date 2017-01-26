@@ -37,4 +37,33 @@ d) run script like as:
              eg: /media/sf_share/LIX64/db2.10.5.03/server_r"
       
       
+ db2CreateDXdb.sh
+ 
+ this script create e preset all db for Digital Experience 8.5
+ a) download Db2Packages
+ b) extract it in temp directory
+ c) if DB2 already install you can run script directly, otherwise install DB2 before
+ d) run script like as:
+ 
+ ./db2CreateDxDB.sh -db2Admin db2inst1 -password P4ssw0rd -dbList relDBName=wpsdbp:comDbName=wpsdbp:custDbName=wpsdbp:jcrDbName=jcrDbp:lmDbName=lkmdbp:fdbkDbName=fdbkdbp
+ 
+ where 
+ db2Admin is your DB2 Administrator
+ password his password
+ dbList is list of db you want create by defualt following schema will be consolidate
+ 
+Release        to wpsdb
+Community      to wpsdb
+Customization  to wpsdb
+JCR 	          to jcrdb
+Feedback 	     to fdbkdb
+Likeminds      to lkmdb
+
+but you can choose differente aggragation schema-database
+you must populate dbList paramiters with appropiate value separated by [:]
+like:
+
+-dbList relDBName=wpsdbp:comDbName=wpsdbp:custDbName=wpsdbp:jcrDbName=jcrDbp:lmDbName=lkmdbp:fdbkDbName=fdbkdbp
+ 
+      
   * -----------------------------------------------------------------------------------------------*    
