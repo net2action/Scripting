@@ -1,5 +1,6 @@
 #!/bin/bash
 <<<<<<< Upstream, based on origin/Linux
+<<<<<<< Upstream, based on origin/Linux
  
 
 PROGNAME=$(basename $0)
@@ -8,12 +9,19 @@ VERSION="1.0.0"
 OWNER=" by net2action 01-2017"
 =======
 
+=======
+ 
+>>>>>>> a5a39d6 Temp - Working in Progress - do not use this script
 
 PROGNAME=$(basename $0)
 AUTHOR="A.Fontana"
 VERSION="1.0.0"
+<<<<<<< Upstream, based on origin/Linux
 OWNER="(c) by Sowre SA - 2016"
 >>>>>>> 8445855 add temporary, Working in Progresss,folder *** do not use this script **
+=======
+OWNER=" by net2action 01-2017"
+>>>>>>> a5a39d6 Temp - Working in Progress - do not use this script
 
 mkdir -p ./log
 log=./log/$(echo $PROGNAME | cut -d "." -f 1)
