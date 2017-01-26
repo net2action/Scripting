@@ -1,10 +1,19 @@
 #!/bin/bash
+<<<<<<< Upstream, based on origin/Linux
  
 
 PROGNAME=$(basename $0)
 AUTHOR="A.Fontana"
 VERSION="1.0.0"
 OWNER=" by net2action 01-2017"
+=======
+
+
+PROGNAME=$(basename $0)
+AUTHOR="A.Fontana"
+VERSION="1.0.0"
+OWNER="(c) by Sowre SA - 2016"
+>>>>>>> 8445855 add temporary, Working in Progresss,folder *** do not use this script **
 
 mkdir -p ./log
 log=./log/$(echo $PROGNAME | cut -d "." -f 1)
