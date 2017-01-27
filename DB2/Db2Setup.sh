@@ -41,7 +41,7 @@ function usageScript
   echo "| Program : ${PROGNAME} ${VERSION}"
   echo "| ========================== "
   echo "| ${PROGNAME}  [-i db2Admin] -v version id (V10.1 V10.5) -p packPath"
-  echo "| -x password -h homePath [-l licPath]"
+  echo "| -x password -h homePath [-l licPath] [-dx (y/n)]"
   echo "|"
   echo "| db2Admin : Db2 owner for working directory, default is db2inst1"
   echo "| db2pwd   : Password of Db2 owner, default is P4ssw0rd"
@@ -98,7 +98,11 @@ while [ "$#" -gt "0" ]; do
     -x)
      db2Pwd="$2"
       shift 2
-    ;;       
+    ;;     
+    -dx)
+     createDxDb="$2"
+      shift 2
+    ;; 
     -v)
      version="$2"
       shift 2
@@ -143,13 +147,19 @@ if [ ${rc} -eq 0 ] ; then
 	    rc=$?
             if [ ${rc} -eq 0 ] ; then
                $homeDir/bin/setDb2Lic.sh -i ${db2Instance} -l ${licPath}
+	       rc=$?
+               if [ ${rc} -eq 0 ] ; then
+                  if [ "$createDxDb" == "y" ]; then
+		     $homeDir/bin/createDxDb.sh -i ${db2Instance} -x ${db2Pwd}
+                  fi
+               fi
 	    fi
          fi
       fi
    fi
 fi
 exit
-$homeDir/bin/createDxDb.sh -db2Admin ${db2Instance} -password ${db2Pwd}
+
 $homeDir/bin/setHotBackup.sh -i ${db2Instance}
 $homeDir/bin/schedulateBcp.sh -i ${db2Instance} -timeString "30 0 * * 1"
 
