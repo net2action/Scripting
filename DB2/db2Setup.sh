@@ -15,7 +15,7 @@ VERSION="1.0.0"
 OWNER="(c) by Net2Action - 2016"
 
 export homeDir=$(pwd)
- 
+hostName=dbstore.ondemand.com
 
 function  error_exit
 {
@@ -41,13 +41,14 @@ function usageScript
   echo "| Program : ${PROGNAME} ${VERSION}"
   echo "| ========================== "
   echo "| ${PROGNAME}  [-i db2Admin] -v version id (V10.1 V10.5) -p packPath"
-  echo "| -x password -h homePath [-l licPath] [-dx (y/n)]"
+  echo "| -x password -h homePath [-l licPath] [-dx (y/n)] [-s hostName]"
   echo "|"
   echo "| db2Admin : Db2 owner for working directory, default is db2inst1"
   echo "| db2pwd   : Password of Db2 owner, default is P4ssw0rd"
   echo "| homePath : Directory where will be install DB2, default is /opt"
   echo "| licPath  : Full path to Db2 license file"
   echo "| version  : V10.1 o V10.5"
+  echo "| hostName : your FQDN for DB2 Server, defulat value is dbstore.ondemand.com"
   echo "| packPath : complete path where we can find db2Setup command , default is db2inst1"
   echo "|            eg: /media/sf_share/LIX64/db2.10.5.03/server_r"
   echo "*----------------------------------------------------------------------------------"
@@ -89,6 +90,10 @@ while [ "$#" -gt "0" ]; do
     ;;
     -p)
      packPath="$2"
+      shift 2
+    ;;
+    -s)
+     hostName="$2"
       shift 2
     ;;
     -l)
@@ -137,7 +142,7 @@ if [ ${rc} -eq 0 ] ; then
    $homeDir/bin/presetDb2Env${os}.sh
    rc=$?
    if [ ${rc} -eq 0 ] ; then
-      $homeDir/bin/setHost${os}.sh dbstore.ondemand.com
+      $homeDir/bin/setHost${os}.sh $hostName
       rc=$?
       if [ ${rc} -eq 0 ] ; then
          $homeDir/bin/updateKernel${os}.sh
