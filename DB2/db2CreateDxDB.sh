@@ -136,7 +136,15 @@ fi
 
 
 
-declare -a inDbList=("$relDBName" "$comDbName" "$custDbName" "$jcrDbName" "$lmDbName" "$fdbkDbName")
+
+declare -a inDbList=("${relDBName}" "${comDbName}" "${custDbName}" "${jcrDbName}" "${lmDbName}" "${fdbkDbName}")
+
+if [ "$DEBUG" == "True" ]; then
+   for i in ${!inDbList[@]}
+   do
+      msgLine " DEBUG ----> $i ---> ${inDbList[$i]}"
+   done
+fi
 
 
 chmod a+w ${logFile}
