@@ -45,7 +45,13 @@ d) run script like as:
   to install DB2, activate license and create standard databse for Digital Experience you can run:           
   ./db2Setup.sh -v V10.5 -i db2inst1 -x P4ssw0rd -p /media/sf_LIX64/db2.10.5.03/server_r/ -l /media/sf_LIX64/db2.10.5.03/db2ese_u.lic -dx y
   
+  if you see following message during setup
   
+  Requirement not matched for DB2 database "Server" . Version: "10.5.0.3". 
+  Summary of prerequisites that are not met on the current system: 
+  DBT3514W  The db2prereqcheck utility failed to find the following 32-bit library file: "/lib/libpam.so*". 
+
+  it's normal DB2 works find, but if you use a 32bit client you must install this library.
       
  db2CreateDXdb.sh
  
