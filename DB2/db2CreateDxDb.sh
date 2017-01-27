@@ -16,14 +16,18 @@ AUTHOR="A.Fontana"
 VERSION="1.0.0"
 OWNER="by net2action - 2016"
 
-relDBName=wpsdb
-comDbName=wpsdb
-custDbName=wpsdb
-jcrDbName=jcrdb
-lmDbName=lkmdb
-fdbkDbName=fdbkdb
+
+
+
 dataHome=/opt/data
 home=$(pwd)
+
+inDbList[0]=wpsdb
+inDbList[1]=wpsdb
+inDbList[2]=wpsdb
+inDbList[3]=jcrDb
+inDbList[4]=lmkDb
+inDbList[5]=fdbkDb
 
 
 if [ -z "$logFile" ]; then
@@ -52,14 +56,20 @@ fi
 	done
         sortDbList=($(echo "${listaDb[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
      else
-        sortDbList=$(echo "${inDbList[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+        if [ "$DEBUG" == "True" ]; then
+          for i in ${!inDbList[@]}
+          do
+            msgLine " DEBUG                          ----> $i ---> ${inDbList[$i]}"
+          done
+        fi
+        sortDbList=($(echo "${inDbList[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
      fi
 
 if [ "$DEBUG" == "True" ]; then
    msgLine " DEBUG ------> Sorted db list :"
    for i in "${!sortDbList[@]}"
    do
-      msgLine " DEBUG ------> $i=>>>${sortDbList[i]}" 
+      msgLine " DEBUG                          ----> $i=>>>${sortDbList[i]}" 
    done
 
 
@@ -133,23 +143,7 @@ if [ "$db2Pwd" == "" ] ; then
  error_exit "$LINENO: Missing, Db2 Admin password, -password flag is mandatory"
 fi
 
-
-
-
-
-declare -a inDbList=("${relDBName}" "${comDbName}" "${custDbName}" "${jcrDbName}" "${lmDbName}" "${fdbkDbName}")
-
-if [ "$DEBUG" == "True" ]; then
-   for i in ${!inDbList[@]}
-   do
-      msgLine " DEBUG ----> $i ---> ${inDbList[$i]}"
-   done
-fi
-
-
 chmod a+w ${logFile}
-
-
 
 homedir=$( getent passwd "${db2Admin}" | cut -d: -f6 )
 scriptDir=$homedir/swScript
