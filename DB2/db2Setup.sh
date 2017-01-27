@@ -150,7 +150,7 @@ if [ ${rc} -eq 0 ] ; then
 	       rc=$?
                if [ ${rc} -eq 0 ] ; then
                   if [ "$createDxDb" == "y" ]; then
-		     $homeDir/bin/createDxDb.sh -i ${db2Instance} -x ${db2Pwd}
+		     $homeDir/db2CreateDxDb.sh -i ${db2Instance} -x ${db2Pwd}
                   fi
                fi
 	    fi
