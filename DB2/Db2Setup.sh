@@ -41,11 +41,12 @@ function usageScript
   echo "| Program : ${PROGNAME} ${VERSION}"
   echo "| ========================== "
   echo "| ${PROGNAME}  [-i db2Admin] -v version id (V10.1 V10.5) -p packPath"
-  echo "| -x password -h homePath "
+  echo "| -x password -h homePath [-l licPath]"
   echo "|"
   echo "| db2Admin : Db2 owner for working directory, default is db2inst1"
   echo "| db2pwd   : Password of Db2 owner, default is P4ssw0rd"
   echo "| homePath : Directory where will be install DB2, default is /opt"
+  echo "| licPath  : Full path to Db2 license file"
   echo "| version  : V10.1 o V10.5"
   echo "| packPath : complete path where we can find db2Setup command , default is db2inst1"
   echo "|            eg: /media/sf_share/LIX64/db2.10.5.03/server_r"
@@ -89,7 +90,11 @@ while [ "$#" -gt "0" ]; do
     -p)
      packPath="$2"
       shift 2
-    ;;       
+    ;;
+    -l)
+     licPath="$2"
+      shift 2
+    ;; 
     -x)
      db2Pwd="$2"
       shift 2
@@ -133,8 +138,12 @@ if [ ${rc} -eq 0 ] ; then
       if [ ${rc} -eq 0 ] ; then
          $homeDir/bin/updateKernel${os}.sh
          rc=$?
-        if [ ${rc} -eq 0 ] ; then
-                $homeDir/bin/installDb2.sh -v ${version} -p ${packPath}
+         if [ ${rc} -eq 0 ] ; then
+            $homeDir/bin/installDb2.sh -v ${version} -p ${packPath}
+	    rc=$?
+            if [ ${rc} -eq 0 ] ; then
+               $homeDir/bin/setDb2Lic.sh -i ${db2Instance} -l ${licPath}
+	    fi
          fi
       fi
    fi
