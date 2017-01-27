@@ -12,7 +12,7 @@ my plan is release all script for Linux: Ubuntu, RedHat, Suse and if possible fo
 
  **** today all script are tested on Ubuntu 14.04 LTS ****
  
-Db2Setup.sh  
+db2Setup.sh  
 
 this scirpit install your DB2 server, to doing it, you must 
 
@@ -23,11 +23,11 @@ c) if you use different version of 10.5 you must prepare your response file as m
    and it's a parameter to run script
 d) run script like as:
 
-   ./Db2Setup.sh -v V10.5 -x P4ssw0rd -p /media/sf_Passport/Packages/LIX64/db2.10.5.03/server_r
+   ./db2Setup.sh -v V10.5 -x P4ssw0rd -p /media/sf_Passport/Packages/LIX64/db2.10.5.03/server_r
    
    the script accept following parameters:
    
-  Db2Setup.sh  [-i db2Admin] -v version id (V10.1 V10.5) -p packPath -x password -h homePath [-l licPath] [-dx (y/n)]
+  ./db2Setup.sh  [-i db2Admin] -v version id (V10.1 V10.5) -p packPath -x password -h homePath [-l licPath] [-dx (y/n)]
    
   db2Admin : Db2 owner for working directory, default is db2inst1"
   db2pwd   : Password of Db2 owner, default is P4ssw0rd"
@@ -36,11 +36,13 @@ d) run script like as:
   version  : V10.1 o V10.5"
   packPath : complete path where we can find db2Setup command , default is db2inst1"
              eg: /media/sf_share/LIX64/db2.10.5.03/server_r"
-  dx       : yes or no (y/n) if "y" all Standarda db for Digital Experience 8.5 will be created           
+  dx       : yes or no (y/n) if "y" all Standarda db for Digital Experience 8.5 will be created 
+  
+  parameter between [] are optional
 
              
   to install DB2, activate license and create standard databse for Digital Experience you can run:           
-  ./Db2Setup.sh -v V10.5 -i db2inst1 -x P4ssw0rd -p /media/sf_LIX64/db2.10.5.03/server_r/ -l /media/sf_LIX64/db2.10.5.03/db2ese_u.lic -dx y
+  ./db2Setup.sh -v V10.5 -i db2inst1 -x P4ssw0rd -p /media/sf_LIX64/db2.10.5.03/server_r/ -l /media/sf_LIX64/db2.10.5.03/db2ese_u.lic -dx y
   
   
       
