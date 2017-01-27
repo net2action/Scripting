@@ -91,7 +91,7 @@ function usage
   echo "| Author : ${AUTHOR}"
   echo "| Program : ${PROGNAME} ${VERSION}"
   echo "| ========================== "
-  echo "| usge : ${PROGNAME} -db2Admin db2inst1 -password xxxxxxxx -dbList yyyyy"
+  echo "| usge : ${PROGNAME} -i db2inst1 -x xxxxxxxx -dbList yyyyy"
   echo "|"
   echo "| dbLsit = <schemaDbName=dbname:schemaDbName=dbname:......"
   echo "| relDBName=<dbname>:comDbName=<dbname>:custDbName=<dbname>:jcrDbName=<dbname>:lmDbName=<dbname>:fdbkDbName=<dbname>"
@@ -103,11 +103,11 @@ msgLine "Create DX Database begin at $(date)"
 # Parse the command-line arguments
 while [ "$#" -gt "0" ]; do
   case "$1" in
-    -db2Admin)
+    -i)
       db2Admin="$2"
       shift 2
     ;;
-    -password)
+    -x)
       db2Pwd="$2"
       shift 2
     ;;
