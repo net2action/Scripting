@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# Startup script for DB2 
+# 
+# 
+
+DB2_USER=@db2admin@
+
+### BEGIN INIT INFO
+# Provides:       $DB2_USER
+# Required-Start: $network $remote_fs
+# Required-Stop: $network $remote_fs
+# Default-Start: 3 5
+# Default-Stop: 0 1 2 5 6
+# Short-Description: DB2 $DB2_USER job service
+# Description:  DB2 Instance $DB2_USER job service
+### END INIT INFO
+
+# Find the name of the script
+NAME=`basename $0`
+
+start() {
+    DB2_START=$"Starting ${NAME} service: "
+
+    su - $DB2_USER -c '. ./sqllib/db2profile; \
+        ./sqllib/adm/db2start > /dev/null'
+
+    ret=$? 
+    if [ $ret -eq 0 ]
+    then
+            echo "$DB2_START Success."
+    else
+            echo "$DB2_START Failed!"
+            exit 1
+    fi
+    echo
+} 
+
+stop() {
+    echo -n $"Stopping ${NAME} service: "
+
+    su - $DB2_USER -c '. ./sqllib/db2profile; \
+        ./sqllib/adm/db2stop > /dev/null'
+
+    ret=$?
+    if [ $ret -eq 0 ]
+    then
+            echo "Success."
+    else
+            echo "Failed!"
+            exit 1
+    fi
+    echo
+}
+
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+exit 0
